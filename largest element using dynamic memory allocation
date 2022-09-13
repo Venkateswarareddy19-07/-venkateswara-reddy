@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main() 
+{
+  int n;
+  float *p;
+  printf("Enter the total number of elements: ");
+  scanf("%d", &n);
+// Allocating memory for n elements
+  p = (float *)calloc(n, sizeof(float));
+  if (p == NULL) 
+  {
+  	printf("memory is not allocated.");
+  	exit(0);
+  }
+// Storing numbers entered by the user.
+  for (int i = 0; i < n; ++i) 
+  {
+  	printf("Enter number%d: ", i + 1);
+  	scanf("%f", p + i);
+  }
+
+  // Finding the largest number
+  for (int i = 1; i < n; ++i) 
+  {
+    if (*p < *(p + i)) 
+	{
+      *p = *(p + i);
+    }
+  }
+  printf("Largest number = %.f", *p);
+  free(p);
+  return 0;
+}
